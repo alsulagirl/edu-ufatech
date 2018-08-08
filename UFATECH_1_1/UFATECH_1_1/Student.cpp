@@ -7,37 +7,43 @@ using namespace std;
 	//Конструктор
 	Student:: Student()
 	{
-	}
-
-	Student::Student(char *surname, char *name, char *lastname, char *birthday, char *address, char *phone, char *faculty, int course)
-	{
-		this->surname = surname;
-		this->name = name;
-		this->lastname = lastname;
-		this->birthday = birthday;
-		this->address = address;
-		this->phone = phone;
-		this->faculty = faculty;
-		this->course = course;
+		this->surname = new char;
+		this->name = new char;
+		this->lastname = new char;
+		this->birthday.d = 1;
+		this->birthday.m = 1;
+		this->birthday.y = 2000;
+		this->address = new char;
+		this->phone = new char;
+		this->faculty = new char;
+		this->course = 0;
 	}
 
 	//Конструктор копирования
-	Student:: Student(const Student& student)
+	Student::Student(const Student& student)
 	{
-		this->surname = new char[strlen(student.surname)+1];
+		this->surname = new char[strlen(student.surname) + 1];
 		strcpy(this->surname, student.surname);
+
 		this->name = new char[strlen(student.name) + 1];
 		strcpy(this->name, student.name);
+
 		this->lastname = new char[strlen(student.lastname) + 1];
 		strcpy(this->lastname, student.lastname);
-		this->birthday = new char[strlen(student.birthday) + 1];
-		strcpy(this->birthday, student.birthday);
+
+		this->birthday.d = student.birthday.d;
+		this->birthday.m = student.birthday.m;
+		this->birthday.y = student.birthday.y;
+
 		this->address = new char[strlen(student.address) + 1];
 		strcpy(this->address, student.address);
+
 		this->phone = new char[strlen(student.phone) + 1];
 		strcpy(this->phone, student.phone);
+
 		this->faculty = new char[strlen(student.faculty) + 1];
 		strcpy(this->faculty, student.faculty);
+
 		this->course = student.course;
 	}
 	//Деструктор
@@ -46,7 +52,6 @@ using namespace std;
 		delete[]surname;
 		delete[]name;
 		delete[]lastname;
-		delete[]birthday;
 		delete[]address;
 		delete[]phone;
 		delete[]faculty;
@@ -58,11 +63,11 @@ using namespace std;
 		scanf("%s", surname);
 		scanf("%s", name);
 		scanf("%s", lastname);
-		scanf("%s", birthday);
+		scanf("%d.%d.%d", &birthday.d, &birthday.m, &birthday.y);
 		scanf("%s", address);
 		scanf("%s", phone);
 		scanf("%s", faculty);
-		scanf("%i", course);
+		scanf("%i", &course);
 	}
 
 	void Student::setStudentSurname(char *surname)
@@ -77,9 +82,11 @@ using namespace std;
 	{
 		this->lastname = lastname;
 	}
-	void Student::setStudentBirthday(char *birtday)
+	void Student::setStudentBirthday(Date birtday)
 	{
-		this->birthday = birthday;
+		this->birthday.d = birthday.d;
+		this->birthday.m = birthday.m;
+		this->birthday.y = birthday.y;
 	}
 	void Student::setStudentAddress(char *address)
 	{
@@ -103,7 +110,7 @@ using namespace std;
 		printf("%s, ", surname);
 		printf("%s, ", name);
 		printf("%s, ", lastname);
-		printf("%s, ", birthday);
+		printf("%d.%d.%d, ", birthday.d, birthday.m, birthday.y);
 		printf("%s, ", address);
 		printf("%s, ", phone);
 		printf("%s, ", faculty);
@@ -122,7 +129,7 @@ using namespace std;
 	{
 		return lastname;
 	}
-	char * Student::getStudentBirthday()
+	Date Student::getStudentBirthday()
 	{
 		return birthday;
 	}
@@ -148,7 +155,7 @@ using namespace std;
 		printf("%s, ", surname);
 		printf("%s, ", name);
 		printf("%s, ", lastname);
-		printf("%s, ", birthday);
+		printf("%d.%d.%d, ", birthday.d, birthday.m, birthday.y);
 		printf("%s, ", address);
 		printf("%s, ", phone);
 		printf("%s, ", faculty);

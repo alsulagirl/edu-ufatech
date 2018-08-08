@@ -6,27 +6,37 @@
 
 using namespace std;
 
+typedef struct
+{
+	int d;
+	int m;
+	int y;
+} Date;
+
 class Student
 {
 private:
+	
+	Date birthday;
+
 	char *surname,
 		*name,
 		*lastname,
-		*birthday,
 		*address,
 		*phone,
 		*faculty;
 	int course;
+
 public:
 	Student();//конструктор
-	Student(char *surname, char *name, char *lastname, char *birthday, char *address, char *phone, char *faculty, int course);
+	Student(char *surname, char *name, char *lastname, Date birthday, char *address, char *phone, char *faculty, int course);
 	Student(const Student &student);//конструктор копирования
 	~Student();//деструктор
 
 	void setStudentSurname(char *surname);
 	void setStudentName(char *name);
 	void setStudentLastname(char *lastname);
-	void setStudentBirthday(char *birthday);
+	void setStudentBirthday(Date birthday);
 	void setStudentAddress(char *address);
 	void setStudentPhone(char *phone);
 	void setStudentFaculty(char *faculty);
@@ -36,7 +46,7 @@ public:
 	char* getStudentSurname();
 	char* getStudentName();
 	char* getStudentLastname();
-	char* getStudentBirthday();
+	Date getStudentBirthday();
 	char* getStudentAddress();
 	char* getStudentPhone();
 	char* getStudentFaculty();

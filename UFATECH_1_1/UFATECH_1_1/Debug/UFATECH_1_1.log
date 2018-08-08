@@ -1,5 +1,4 @@
-﻿  Student.cpp
-d:\ufatech\ufatech_1_1\ufatech_1_1\student.cpp(65): warning C4477: "scanf": в строке форматирования "%i" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "int"
-  UFATECH_1_1.cpp
-  Создание кода...
-  UFATECH_1_1.vcxproj -> D:\UFATECH\UFATECH_1_1\Debug\UFATECH_1_1.exe
+﻿  UFATECH_1_1.cpp
+d:\ufatech\edu-ufatech\ufatech_1_1\ufatech_1_1\ufatech_1_1.cpp(21): warning C4018: <: несоответствие типов со знаком и без знака
+d:\ufatech\edu-ufatech\ufatech_1_1\ufatech_1_1\ufatech_1_1.cpp(69): warning C4018: <: несоответствие типов со знаком и без знака
+  UFATECH_1_1.vcxproj -> D:\UFATECH\edu-ufatech\UFATECH_1_1\Debug\UFATECH_1_1.exe
