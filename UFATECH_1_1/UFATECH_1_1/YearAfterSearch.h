@@ -5,6 +5,4 @@
 
 void YearAfterSearch(Student * mass, int year, int n);
 
-
-
 #endif YEARAFTERSEARCH_H_

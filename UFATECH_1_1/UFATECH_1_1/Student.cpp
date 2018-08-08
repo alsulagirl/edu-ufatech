@@ -7,21 +7,21 @@ using namespace std;
 	//Конструктор
 Student::Student()
 {
-	this->surname = new char;
+	this->surname = new char[100];
 
-	this->name = new char;
+	this->name = new char[100];
 
-	this->lastname = new char;
+	this->lastname = new char[100];
 
 	this->birthday.date = 0;
 	this->birthday.month = 0;
 	this->birthday.year = 0;
 
-	this->address = new char;
+	this->address = new char[100];
 
-	this->phone = new char;
+	this->phone = new char[100];
 
-	this->faculty = new char;
+	this->faculty = new char[100];
 
 	this->course = 0;
 }
@@ -81,21 +81,21 @@ Student::Student()
 
 		this->course = student.course;
 	}
-	//Деструктор
+	//Деструктор 
 	Student:: ~Student()
 	{
-		delete surname;
-		delete name;
-		delete lastname;
-		delete address;
-		delete phone;
-		delete faculty;
+		delete []surname;
+		delete []name;
+		delete []lastname;
+		delete []address;
+		delete []phone;
+		delete []faculty;
 	}
 
 	void Student::setStudent()
 	{
 		printf("Введите данные о студенте\n");
-		cin >> surname;
+			cin >> surname;
 		cin >> name;
 		cin >> lastname;
 		scanf("%d.%d.%d", &birthday.date, &birthday.month, &birthday.year);
