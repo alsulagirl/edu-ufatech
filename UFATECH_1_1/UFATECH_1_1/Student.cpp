@@ -5,18 +5,53 @@
 using namespace std;
 
 	//Конструктор
-	Student:: Student()
+Student::Student()
+{
+	this->surname = new char;
+
+	this->name = new char;
+
+	this->lastname = new char;
+
+	this->birthday.date = 0;
+	this->birthday.month = 0;
+	this->birthday.year = 0;
+
+	this->address = new char;
+
+	this->phone = new char;
+
+	this->faculty = new char;
+
+	this->course = 0;
+}
+
+
+	Student:: Student(char *surname, char *name, char *lastname, Date birthday, char *address, char *phone, char *faculty, int course)
 	{
 		this->surname = new char;
+		this->surname = surname;
+
 		this->name = new char;
+		this->name = name;
+
 		this->lastname = new char;
-		this->birthday.d = 1;
-		this->birthday.m = 1;
-		this->birthday.y = 2000;
+		this->lastname = lastname;
+
+		this->birthday.date = birthday.date;
+		this->birthday.month = birthday.month;
+		this->birthday.year = birthday.year;
+
 		this->address = new char;
+		this->address = address;
+
 		this->phone = new char;
+		this->phone = phone;
+
 		this->faculty = new char;
-		this->course = 0;
+		this->faculty = faculty;
+
+		this->course = course;
 	}
 
 	//Конструктор копирования
@@ -31,9 +66,9 @@ using namespace std;
 		this->lastname = new char[strlen(student.lastname) + 1];
 		strcpy(this->lastname, student.lastname);
 
-		this->birthday.d = student.birthday.d;
-		this->birthday.m = student.birthday.m;
-		this->birthday.y = student.birthday.y;
+		this->birthday.date = student.birthday.date;
+		this->birthday.month = student.birthday.month;
+		this->birthday.year = student.birthday.year;
 
 		this->address = new char[strlen(student.address) + 1];
 		strcpy(this->address, student.address);
@@ -49,25 +84,25 @@ using namespace std;
 	//Деструктор
 	Student:: ~Student()
 	{
-		delete[]surname;
-		delete[]name;
-		delete[]lastname;
-		delete[]address;
-		delete[]phone;
-		delete[]faculty;
+		delete surname;
+		delete name;
+		delete lastname;
+		delete address;
+		delete phone;
+		delete faculty;
 	}
 
 	void Student::setStudent()
 	{
 		printf("Введите данные о студенте\n");
-		scanf("%s", surname);
-		scanf("%s", name);
-		scanf("%s", lastname);
-		scanf("%d.%d.%d", &birthday.d, &birthday.m, &birthday.y);
-		scanf("%s", address);
-		scanf("%s", phone);
-		scanf("%s", faculty);
-		scanf("%i", &course);
+		cin >> surname;
+		cin >> name;
+		cin >> lastname;
+		scanf("%d.%d.%d", &birthday.date, &birthday.month, &birthday.year);
+		cin >> address;
+		cin >> phone;
+		cin >> faculty;
+		cin >> course;
 	}
 
 	void Student::setStudentSurname(char *surname)
@@ -84,9 +119,9 @@ using namespace std;
 	}
 	void Student::setStudentBirthday(Date birtday)
 	{
-		this->birthday.d = birthday.d;
-		this->birthday.m = birthday.m;
-		this->birthday.y = birthday.y;
+		this->birthday.date = birthday.date;
+		this->birthday.month = birthday.month;
+		this->birthday.year = birthday.year;
 	}
 	void Student::setStudentAddress(char *address)
 	{
@@ -110,22 +145,22 @@ using namespace std;
 		printf("%s, ", surname);
 		printf("%s, ", name);
 		printf("%s, ", lastname);
-		printf("%d.%d.%d, ", birthday.d, birthday.m, birthday.y);
+		printf("%d.%d.%d, ", birthday.date, birthday.month, birthday.year);
 		printf("%s, ", address);
 		printf("%s, ", phone);
 		printf("%s, ", faculty);
 		printf("%i. ", course);
 	}
 
-	char * Student::getStudentSurname()
+	char* Student::getStudentSurname()
 	{
 		return surname;
 	}
-	char * Student::getStudentName()
+	char* Student::getStudentName()
 	{
 		return name;
 	}
-	char * Student::getStudentLastname()
+	char* Student::getStudentLastname()
 	{
 		return lastname;
 	}
@@ -133,15 +168,15 @@ using namespace std;
 	{
 		return birthday;
 	}
-	char * Student::getStudentAddress()
+	char* Student::getStudentAddress()
 	{
 		return address;
 	}
-	char * Student::getStudentPhone()
+	char* Student::getStudentPhone()
 	{
 		return phone;
 	}
-	char * Student::getStudentFaculty()
+	char* Student::getStudentFaculty()
 	{
 		return faculty;
 	}
@@ -155,7 +190,7 @@ using namespace std;
 		printf("%s, ", surname);
 		printf("%s, ", name);
 		printf("%s, ", lastname);
-		printf("%d.%d.%d, ", birthday.d, birthday.m, birthday.y);
+		printf("%d.%d.%d, ", birthday.date, birthday.month, birthday.year);
 		printf("%s, ", address);
 		printf("%s, ", phone);
 		printf("%s, ", faculty);

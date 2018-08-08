@@ -8,9 +8,9 @@ using namespace std;
 
 typedef struct
 {
-	int d;
-	int m;
-	int y;
+	int date;
+	int month;
+	int year;
 } Date;
 
 class Student
