@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Document</title>
+	</head>
+	<body style="margin:0%;">
+        <br>График функции f(x)=x^k+b             
+        <br>k = <input type="number" id=k value="2"/>   x0 = <input type="number" id=x0 value="0"/>
+        <br>b = <input type="number" id=b value="0"/>   x1 = <input type="number" id=x1 value="10"/>
+        <br>
+        <canvas id="canvas" style="border: 2px solid #000000">Your browser is not supported</canvas>
+        <button type="button" onclick="drawGraph();">Нарисовать график</button>
+              
+    <script>
+        
+        var can = document.getElementById('canvas');
+        can.width = window.innerWidth;
+        can.height = window.innerHeight;
+        var ctx = can.getContext('2d');
+        var step = 20;//шаг решетки
+    
+
+        //рисуем график
+        function func(y, k) {
+            return Math.pow(y, k);
+        }
+        //рисуем решетку
+        function drawgrid(){
+        for (var i = step; i<can.width; i+=step){//рисуем вертикальные
+            ctx.beginPath();
+            ctx.strokeStyle = '#eee';
+            ctx.lineWidth = 1;
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, can.height);
+            ctx.closePath();
+            ctx.stroke();
+        }
+        for (var i = step; i<can.height; i+=step){//рисуем Горизонтальные
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(can.width, i);
+            ctx.closePath();
+            ctx.stroke();
+        }     
+        }
+
+        //стираем
+        function clearGrid(){
+            ctx.clearRect(0, 0, can.width, can.height);
+        }
+
+       function drawAxle(){
+        // Рисуем ось X зелёным цветом
+            ctx.beginPath();
+            ctx.moveTo(0, can.height/2);
+            ctx.lineTo(can.width, can.height/2);
+            ctx.strokeStyle = 'green';
+            ctx.lineWidth = 3;
+            ctx.closePath();
+            ctx.stroke();
+         
+        // Рисуем ось Y зелёным цветом
+            ctx.beginPath();
+            ctx.moveTo(can.width/2, 0);
+            ctx.lineTo(can.width/2, can.height);
+            ctx.strokeStyle = 'green';
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function drawGraph(){
+            clearGrid();
+            drawgrid();
+            drawAxle();
+            var k = Number(document.getElementById("k").value);
+            var b = Number(document.getElementById("b").value);
+            var x0 = Number(document.getElementById("x0").value);
+            var x1 = Number(document.getElementById("x1").value);
+            ctx.strokeStyle = "blue";
+            ctx.beginPath();
+            cy = can.height / 2.0;
+            cx = can.width / 2.0; 
+            ctx.moveTo(cx, -cy-b);
+            for (var i = x0; i<=x1; i+=0.2) {
+                x = i;
+                y = func(x, k)+b;      
+                ctx.lineTo(cx+x,cy-y);
+            }
+            ctx.lineWidth = 1;
+            ctx.stroke();
+    }
+    </script>
+    </body>
+ 
+</html>
